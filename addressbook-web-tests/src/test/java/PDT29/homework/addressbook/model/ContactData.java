@@ -1,4 +1,4 @@
-package PDT29.homework.addressbook;
+package PDT29.homework.addressbook.model;
 
 public class ContactData {
   private final String firstName;
