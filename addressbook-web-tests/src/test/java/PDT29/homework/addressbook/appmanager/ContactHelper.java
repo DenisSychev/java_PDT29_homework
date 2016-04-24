@@ -44,4 +44,11 @@ public class ContactHelper extends BaseHelper{
     click(By.xpath("//input[@type='button' and @value='Delete']"));
   }
 
+  public void initContactModification() {
+    click(By.xpath("//*[@name=\"entry\"]//a[contains(@href,'edit.php')]"));
+  }
+
+  public void submitContactModification() {
+    click(By.xpath("//input[@value='Update']"));
+  }
 }
