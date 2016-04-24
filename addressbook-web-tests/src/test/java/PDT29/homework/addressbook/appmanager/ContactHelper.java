@@ -33,4 +33,15 @@ public class ContactHelper extends BaseHelper{
   public void gotoEditContactPage() {
     click(By.linkText("add new"));
   }
+
+  public void selectContact() {
+    if (!wd.findElement(By.name("selected[]")).isSelected()) {
+      click(By.name("selected[]"));
+    }
+  }
+
+  public void deleteSelectedContact() {
+    click(By.xpath("//input[@type='button' and @value='Delete']"));
+  }
+
 }
