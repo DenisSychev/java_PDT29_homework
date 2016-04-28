@@ -2,11 +2,12 @@ package PDT29.homework.addressbook.appmanager;
 
 import PDT29.homework.addressbook.model.ContactData;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class ContactHelper extends BaseHelper{
 
-  public ContactHelper(FirefoxDriver wd) {
+  public ContactHelper(WebDriver wd) {
     super(wd);
   }
 

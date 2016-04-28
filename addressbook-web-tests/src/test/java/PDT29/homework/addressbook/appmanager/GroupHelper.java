@@ -2,11 +2,12 @@ package PDT29.homework.addressbook.appmanager;
 
 import PDT29.homework.addressbook.model.GroupData;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class GroupHelper extends BaseHelper{
 
-  public GroupHelper(FirefoxDriver wd) {
+  public GroupHelper(WebDriver wd) {
     super(wd);
   }
 
