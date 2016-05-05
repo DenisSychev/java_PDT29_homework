@@ -2,9 +2,7 @@ package PDT29.homework.addressbook.appmanager;
 
 import PDT29.homework.addressbook.model.ContactData;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
@@ -34,9 +32,9 @@ public class ContactHelper extends BaseHelper {
     type(By.name("email3"), contactData.getEmail_3());
 
     if (creation) {
-      new Select(wd.findElement(By.xpath("//select[@name='new_group']"))).selectByVisibleText(contactData.getGroup());
+      new Select(wd.findElement(By.xpath(".//select[@name='new_group']"))).selectByVisibleText(contactData.getGroup());
     } else {
-      Assert.assertFalse(isElementPresent(By.xpath("//select[@name='new_group']")));
+      Assert.assertFalse(isElementPresent(By.xpath(".//select[@name='new_group']")));
     }
 
   }
@@ -52,14 +50,24 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void deleteSelectedContact() {
-    click(By.xpath("//input[@type='button' and @value='Delete']"));
+    click(By.xpath(".//input[@type='button' and @value='Delete']"));
   }
 
   public void initContactModification() {
-    click(By.xpath("//*[@name=\"entry\"]//a[contains(@href,'edit.php')]"));
+    click(By.xpath(".//*[@name='entry']//a[contains(@href,'edit.php')]"));
   }
 
   public void submitContactModification() {
     click(By.xpath("//input[@value='Update']"));
+  }
+
+  public void createContact(ContactData contact, boolean b) {
+    gotoEditContactPage();
+    fillContactForm(contact, b);
+    submitContactCreation();
+  }
+
+  public boolean isThereAContact() {
+    return isElementPresent(By.name("selected[]"));
   }
 }
