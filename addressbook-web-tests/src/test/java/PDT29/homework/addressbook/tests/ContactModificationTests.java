@@ -1,6 +1,7 @@
 package PDT29.homework.addressbook.tests;
 
 import PDT29.homework.addressbook.model.ContactData;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class ContactModificationTests extends TestBase {
@@ -8,6 +9,7 @@ public class ContactModificationTests extends TestBase {
   @Test
   public void testContactModification(){
     app.getNavigationHelper().gotoHomepage();
+    int before = app.getContactHelper().getContactCount();
     if (! app.getContactHelper().isThereAContact()){
       app.getContactHelper().createContact(new ContactData("Иванов", "Пётр", "Сидорович", "И. П. С.", "М.", "Компания №1",
               "Светлая ул., д. 1, Светлогорск, Центральная область, Страна",
@@ -23,5 +25,7 @@ public class ContactModificationTests extends TestBase {
             "name@domain.bm", "last.name@domain.bm", null), false);
     app.getContactHelper().submitContactModification();
     app.getNavigationHelper().gotoHomepage();
+    int after = app.getContactHelper().getContactCount();
+    Assert.assertEquals(after, before);
   }
 }
