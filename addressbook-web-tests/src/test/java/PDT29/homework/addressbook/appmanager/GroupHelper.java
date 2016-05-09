@@ -3,7 +3,11 @@ package PDT29.homework.addressbook.appmanager;
 import PDT29.homework.addressbook.model.GroupData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GroupHelper extends BaseHelper{
 
@@ -31,11 +35,9 @@ public class GroupHelper extends BaseHelper{
     click(By.name("delete"));
   }
 
-  public void selectGroup() {
-    if (!wd.findElement(By.name("selected[]")).isSelected()) {
-      click(By.name("selected[]"));
+  public void selectGroup(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
     }
-  }
 
   public void initGroupModification() {
     click(By.xpath("//input[@name='edit']"));
@@ -58,5 +60,17 @@ public class GroupHelper extends BaseHelper{
 
   public int getGroupCount() {
     return wd.findElements(By.xpath(".//span[@class=\"group\"]")).size();
+  }
+
+  public List<GroupData> getGroupList() {
+    List<GroupData> groups = new ArrayList<GroupData>();
+    List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
+    for (WebElement element : elements){
+      String name = element.getText();
+      GroupData group = new GroupData(name, null, null);
+      groups.add(group);
+    }
+
+    return groups;
   }
 }
