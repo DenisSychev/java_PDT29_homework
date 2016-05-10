@@ -4,12 +4,13 @@ import PDT29.homework.addressbook.model.ContactData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 public class ContactDeletionTests extends TestBase {
 
   @Test
   public void testContactDeletion(){
     app.getNavigationHelper().gotoHomepage();
-    int before = app.getContactHelper().getContactCount();
     if (! app.getContactHelper().isThereAContact()){
       app.getContactHelper().createContact(new ContactData("Иванов", "Пётр", "Сидорович", "И. П. С.", "М.", "Компания №1",
               "Светлая ул., д. 1, Светлогорск, Центральная область, Страна",
@@ -17,11 +18,12 @@ public class ContactDeletionTests extends TestBase {
               "ivanov@noone.sv", null, "test2"), true);
     }
     app.getNavigationHelper().gotoHomepage();
-    app.getContactHelper().selectContact();
+    List<ContactData> before = app.getContactHelper().getContactList();
+    app.getContactHelper().selectContact(before.size() - 1);
     app.getContactHelper().deleteSelectedContact();
     app.getContactHelper().closeAlert();
     app.getNavigationHelper().gotoHomepage();
-    int after = app.getContactHelper().getContactCount();
-    Assert.assertEquals(after, before - 1);
+    List<ContactData> after = app.getContactHelper().getContactList();
+    Assert.assertEquals(after.size(), before.size() - 1);
   }
 }

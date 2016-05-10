@@ -4,12 +4,13 @@ import PDT29.homework.addressbook.model.ContactData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 public class ContactModificationTests extends TestBase {
 
   @Test
   public void testContactModification(){
     app.getNavigationHelper().gotoHomepage();
-    int before = app.getContactHelper().getContactCount();
     if (! app.getContactHelper().isThereAContact()){
       app.getContactHelper().createContact(new ContactData("Иванов", "Пётр", "Сидорович", "И. П. С.", "М.", "Компания №1",
               "Светлая ул., д. 1, Светлогорск, Центральная область, Страна",
@@ -17,7 +18,8 @@ public class ContactModificationTests extends TestBase {
               "ivanov@noone.sv", null, "test2"), true);
     }
     app.getNavigationHelper().gotoHomepage();
-    app.getContactHelper().selectContact();
+    List<ContactData> before = app.getContactHelper().getContactList();
+    app.getContactHelper().selectContact(before.size() - 1);
     app.getContactHelper().initContactModification();
     app.getContactHelper().fillContactForm(new ContactData("Name", "N.S.", "Surname", "Nickname", "Mr.", "Company",
             "Black str., Black city, 1. Blackmore",
@@ -25,7 +27,7 @@ public class ContactModificationTests extends TestBase {
             "name@domain.bm", "last.name@domain.bm", null), false);
     app.getContactHelper().submitContactModification();
     app.getNavigationHelper().gotoHomepage();
-    int after = app.getContactHelper().getContactCount();
-    Assert.assertEquals(after, before);
+    List<ContactData> after = app.getContactHelper().getContactList();
+    Assert.assertEquals(after.size(), before.size());
   }
 }

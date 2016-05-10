@@ -3,8 +3,12 @@ package PDT29.homework.addressbook.appmanager;
 import PDT29.homework.addressbook.model.ContactData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactHelper extends BaseHelper {
 
@@ -43,10 +47,8 @@ public class ContactHelper extends BaseHelper {
     click(By.linkText("add new"));
   }
 
-  public void selectContact() {
-    if (!wd.findElement(By.name("selected[]")).isSelected()) {
-      click(By.name("selected[]"));
-    }
+  public void selectContact(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
   }
 
   public void deleteSelectedContact() {
@@ -73,5 +75,18 @@ public class ContactHelper extends BaseHelper {
 
   public int getContactCount() {
     return wd.findElements(By.xpath(".//*[@id='maintable']//*[@name='entry']")).size();
+  }
+
+  public List<ContactData> getContactList() {
+    List<ContactData> contacts = new ArrayList<ContactData>();
+    List<WebElement> elements = wd.findElements(By.name("entry"));
+    for (WebElement element : elements) {
+      String lastName = element.findElement(By.xpath("(.//td[not(child::*)])[1]")).getText();
+      String firsName = element.findElement(By.xpath("(.//td[not(child::*)])[2]")).getText();
+      String address = element.findElement(By.xpath("(.//td[not(child::*)])[3]")).getText();
+      ContactData contact = new ContactData(firsName, null, lastName, null, null, null, address, null, null, null, null, null, null, null);
+      contacts.add(contact);
+    }
+    return contacts;
   }
 }
