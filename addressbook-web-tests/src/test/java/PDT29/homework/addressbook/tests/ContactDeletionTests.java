@@ -2,14 +2,15 @@ package PDT29.homework.addressbook.tests;
 
 import PDT29.homework.addressbook.model.ContactData;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
 public class ContactDeletionTests extends TestBase {
 
-  @Test
-  public void testContactDeletion() {
+  @BeforeMethod
+  public void checkPreconditions(){
     app.getNavigationHelper().gotoHomepage();
     if (!app.getContactHelper().isThereAContact()) {
       app.getContactHelper().createContact(new ContactData("Иванов", "Пётр", "Сидорович", "И. П. С.", "М.", "Компания №1",
@@ -17,6 +18,10 @@ public class ContactDeletionTests extends TestBase {
               "+08 111-22-33", "+09 222-11-33", "+06 555-66-88", null,
               "ivanov@noone.sv", null, "test2"), true);
     }
+  }
+
+  @Test
+  public void testContactDeletion() {
     app.getNavigationHelper().gotoHomepage();
     List<ContactData> before = app.getContactHelper().getContactList();
     app.getContactHelper().selectContact(before.size() - 1);
