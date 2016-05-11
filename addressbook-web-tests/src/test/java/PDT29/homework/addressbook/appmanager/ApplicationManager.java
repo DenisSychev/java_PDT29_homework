@@ -23,11 +23,11 @@ public class ApplicationManager {
   }
 
   public void init() {
-    if (Objects.equals(browser, BrowserType.FIREFOX)){
+    if (Objects.equals(browser, BrowserType.FIREFOX)) {
       wd = new FirefoxDriver();
-    } else if (Objects.equals(browser, BrowserType.CHROME)){
+    } else if (Objects.equals(browser, BrowserType.CHROME)) {
       wd = new ChromeDriver();
-    } else if (Objects.equals(browser, BrowserType.IE)){
+    } else if (Objects.equals(browser, BrowserType.IE)) {
       wd = new InternetExplorerDriver();
     }
 
@@ -44,15 +44,15 @@ public class ApplicationManager {
     wd.quit();
   }
 
-  public GroupHelper getGroupHelper() {
+  public GroupHelper group() {
     return groupHelper;
   }
 
-  public NavigationHelper getNavigationHelper() {
+  public NavigationHelper goTo() {
     return navigationHelper;
   }
 
-  public ContactHelper getContactHelper() {
+  public ContactHelper contact() {
     return contactHelper;
   }
 }

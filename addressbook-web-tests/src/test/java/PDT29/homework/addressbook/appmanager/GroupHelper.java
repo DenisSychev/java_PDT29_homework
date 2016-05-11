@@ -9,13 +9,15 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GroupHelper extends BaseHelper{
+public class GroupHelper extends BaseHelper {
 
   public GroupHelper(WebDriver wd) {
     super(wd);
   }
 
-  public void returnToGroupPage() { click(By.linkText("group page")); }
+  public void returnToGroupPage() {
+    click(By.linkText("group page"));
+  }
 
   public void submitGroupCreation() {
     click(By.name("submit"));
@@ -37,7 +39,7 @@ public class GroupHelper extends BaseHelper{
 
   public void selectGroup(int index) {
     wd.findElements(By.name("selected[]")).get(index).click();
-    }
+  }
 
   public void initGroupModification() {
     click(By.xpath("//input[@name='edit']"));
@@ -47,18 +49,24 @@ public class GroupHelper extends BaseHelper{
     click(By.xpath("//input[@name='update']"));
   }
 
-  public void createNewGroup(GroupData group) {
+  public void create(GroupData group) {
     initGroupCreation();
     fillGroupForm(group);
     submitGroupCreation();
     returnToGroupPage();
   }
 
-  public void modifyGroup(int index, GroupData group) {
+  public void modify(int index, GroupData group) {
     selectGroup(index);
     initGroupModification();
     fillGroupForm(group);
     submitGroupModification();
+    returnToGroupPage();
+  }
+
+  public void delete(int index) {
+    selectGroup(index);
+    deleteSelectedGroups();
     returnToGroupPage();
   }
 
@@ -70,10 +78,10 @@ public class GroupHelper extends BaseHelper{
     return wd.findElements(By.xpath(".//span[@class=\"group\"]")).size();
   }
 
-  public List<GroupData> getGroupList() {
+  public List<GroupData> list() {
     List<GroupData> groups = new ArrayList<GroupData>();
     List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
-    for (WebElement element : elements){
+    for (WebElement element : elements) {
       String name = element.getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       GroupData group = new GroupData(id, name, null, null);

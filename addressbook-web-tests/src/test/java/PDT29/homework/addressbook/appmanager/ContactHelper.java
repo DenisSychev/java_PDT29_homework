@@ -63,17 +63,23 @@ public class ContactHelper extends BaseHelper {
     click(By.xpath("//input[@value='Update']"));
   }
 
-  public void createContact(ContactData contact, boolean b) {
+  public void create(ContactData contact, boolean b) {
     gotoEditContactPage();
     fillContactForm(contact, b);
     submitContactCreation();
   }
 
-  public void modifyContact(int index, ContactData contact) {
+  public void modify(int index, ContactData contact) {
     selectContact(index);
     initContactModification(index);
     fillContactForm(contact, false);
     submitContactModification();
+  }
+
+  public void delete(int index) {
+    selectContact(index);
+    deleteSelectedContact();
+    closeAlert();
   }
 
   public boolean isThereAContact() {
@@ -84,7 +90,7 @@ public class ContactHelper extends BaseHelper {
     return wd.findElements(By.xpath(".//*[@id='maintable']//*[@name='entry']")).size();
   }
 
-  public List<ContactData> getContactList() {
+  public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
