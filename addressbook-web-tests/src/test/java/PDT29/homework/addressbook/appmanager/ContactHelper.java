@@ -55,8 +55,8 @@ public class ContactHelper extends BaseHelper {
     click(By.xpath(".//input[@type='button' and @value='Delete']"));
   }
 
-  public void initContactModification() {
-    click(By.xpath(".//*[@name='entry']//a[contains(@href,'edit.php')]"));
+  public void initContactModification(int index) {
+    wd.findElements(By.xpath(".//*[@name='entry']//a[contains(@href,'edit.php')]")).get(index).click();
   }
 
   public void submitContactModification() {
