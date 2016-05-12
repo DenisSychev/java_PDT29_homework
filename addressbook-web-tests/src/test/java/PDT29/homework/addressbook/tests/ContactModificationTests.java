@@ -14,10 +14,20 @@ public class ContactModificationTests extends TestBase {
   public void checkPreconditions() {
     app.goTo().homepage();
     if (app.contact().list().size() == 0) {
-      app.contact().create(new ContactData("Иванов", "Пётр", "Сидорович", "И. П. С.", "М.", "Компания №1",
-              "Светлая ул., д. 1, Светлогорск, Центральная область, Страна",
-              "+08 111-22-33", "+09 222-11-33", "+06 555-66-88", null,
-              "ivanov@noone.sv", null, "test2"), true);
+      app.contact().create(new ContactData()
+              .thisFirstName("Пётр")
+              .thisMiddleName("Сидорович")
+              .thisLastName("Базанов")
+              .thisNickName("П. С. Б.")
+              .thisTitle("П.")
+              .thisCompany("Компания №2")
+              .thisAddress("Светлая ул., д. 1, Светлогорск, Центральная область, Страна")
+              .thisHomePhone("+08 111-22-33")
+              .thisMobilePhone("+08 111-22-33")
+              .thisWorkPhone("+09 222-11-33")
+              .thisFax("+06 555-66-88")
+              .thisEmail_3("ivanov@noone.sv")
+              .thisGroup("Group 1"), true);
     }
   }
 
@@ -26,11 +36,21 @@ public class ContactModificationTests extends TestBase {
     app.goTo().homepage();
     List<ContactData> before = app.contact().list();
     int index = before.size() - 1;
-    ContactData contact = new ContactData(before.get(index).getId(), "Name", "N.S.", "Surname", "Nickname", "Mr.", "Company",
-            "Black str., Black city, 1. Blackmore",
-            "+666991112233", "+666881112233", "+666771112233", "+666771112332",
-            "name@domain.bm", "last.name@domain.bm", null);
-
+    ContactData contact = new ContactData()
+            .thisId(before.get(index).getId())
+            .thisFirstName("Name")
+            .thisMiddleName("N.S.")
+            .thisLastName("Surname")
+            .thisNickName("Who")
+            .thisTitle("Mr.")
+            .thisCompany("This Company")
+            .thisAddress("Black str., Black city, 1. Blackmore")
+            .thisHomePhone("+666 99 111 22 33")
+            .thisMobilePhone("+6 66 88 111 22 33")
+            .thisWorkPhone("+66 677 111 2 33 2")
+            .thisFax("+666771112233")
+            .thisEmail_2("name@domain.bm")
+            .thisEmail_3("last.name@domain.bm");
     app.contact().modify(index, contact);
     app.goTo().homepage();
     List<ContactData> after = app.contact().list();

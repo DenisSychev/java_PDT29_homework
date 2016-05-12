@@ -1,68 +1,100 @@
 package PDT29.homework.addressbook.model;
 
 public class ContactData {
-  private int id;
-  private final String firstName;
-  private final String middleName;
-  private final String lastName;
-  private final String nickName;
-  private final String title;
-  private final String company;
-  private final String address;
-  private final String homePhone;
-  private final String mobilePhone;
-  private final String workPhone;
-  private final String fax;
-  private final String email_2;
-  private final String email_3;
+  private int id = Integer.MAX_VALUE;
+  private String firstName;
+  private String middleName;
+  private String lastName;
+  private String nickName;
+  private String title;
+  private String company;
+  private String address;
+  private String homePhone;
+  private String mobilePhone;
+  private String workPhone;
+  private String fax;
+  private String email_2;
+  private String email_3;
   private String group;
 
-  public ContactData(int id, String firstName, String middleName, String lastName, String nickName, String title, String company,
-                     String address, String homePhone, String mobilePhone, String workPhone, String fax, String email_2,
-                     String email_3, String group) {
-    this.id = id;
-    this.firstName = firstName;
-    this.middleName = middleName;
-    this.lastName = lastName;
-    this.nickName = nickName;
-    this.title = title;
-    this.company = company;
-    this.address = address;
-    this.homePhone = homePhone;
-    this.mobilePhone = mobilePhone;
-    this.workPhone = workPhone;
-    this.fax = fax;
-    this.email_2 = email_2;
-    this.email_3 = email_3;
-    this.group = group;
-  }
-
-  public ContactData(String firstName, String middleName, String lastName, String nickName, String title, String company,
-                     String address, String homePhone, String mobilePhone, String workPhone, String fax, String email_2,
-                     String email_3, String group) {
-    this.id = Integer.MAX_VALUE;
-    this.firstName = firstName;
-    this.middleName = middleName;
-    this.lastName = lastName;
-    this.nickName = nickName;
-    this.title = title;
-    this.company = company;
-    this.address = address;
-    this.homePhone = homePhone;
-    this.mobilePhone = mobilePhone;
-    this.workPhone = workPhone;
-    this.fax = fax;
-    this.email_2 = email_2;
-    this.email_3 = email_3;
-    this.group = group;
-  }
 
   public int getId() {
     return id;
   }
 
-  public void setId(int id) {
+  public ContactData thisId(int id) {
     this.id = id;
+    return this;
+  }
+
+  public ContactData thisFirstName(String firstName) {
+    this.firstName = firstName;
+    return this;
+  }
+
+  public ContactData thisMiddleName(String middleName) {
+    this.middleName = middleName;
+    return this;
+  }
+
+  public ContactData thisLastName(String lastName) {
+    this.lastName = lastName;
+    return this;
+  }
+
+  public ContactData thisNickName(String nickName) {
+    this.nickName = nickName;
+    return this;
+  }
+
+  public ContactData thisTitle(String title) {
+    this.title = title;
+    return this;
+  }
+
+  public ContactData thisCompany(String company) {
+    this.company = company;
+    return this;
+  }
+
+  public ContactData thisAddress(String address) {
+    this.address = address;
+    return this;
+  }
+
+  public ContactData thisHomePhone(String homePhone) {
+    this.homePhone = homePhone;
+    return this;
+  }
+
+  public ContactData thisMobilePhone(String mobilePhone) {
+    this.mobilePhone = mobilePhone;
+    return this;
+  }
+
+  public ContactData thisWorkPhone(String workPhone) {
+    this.workPhone = workPhone;
+    return this;
+  }
+
+  public ContactData thisFax(String fax) {
+    this.fax = fax;
+    return this;
+  }
+
+  public ContactData thisEmail_2(String email_2) {
+    this.email_2 = email_2;
+    return this;
+  }
+
+  public ContactData thisEmail_3(String email_3) {
+    this.email_3 = email_3;
+    return this;
+  }
+
+  public ContactData thisGroup(String group) {
+    this.group = group;
+    return this;
   }
 
   public String getFirstName() {

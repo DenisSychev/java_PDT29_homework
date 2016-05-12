@@ -13,10 +13,11 @@ public class ContactCreationTests extends TestBase {
   public void testContactCreation() {
     app.goTo().homepage();
     List<ContactData> before = app.contact().list();
-    ContactData contact = new ContactData("Фёдр", "Петрович", "Иванов", "И. П. С.", "М.", "Компания №1",
-            "Светлая ул., д. 1, Светлогорск, Центральная область, Страна",
-            "+08 111-22-33", "+09 222-11-33", "+06 555-66-88", null,
-            "ivanov@noone.sv", null, "test2");
+    ContactData contact = new ContactData()
+            .thisFirstName("Фёдр").thisMiddleName("Петрович").thisLastName("Иванов").thisNickName("И. П. С.")
+            .thisTitle("М.").thisCompany("Компания №1").thisAddress("Светлая ул., д. 1, Светлогорск, Центральная область, Страна")
+            .thisHomePhone("+08 111-22-33").thisMobilePhone("+08 111-22-33").thisWorkPhone("+09 222-11-33").thisFax("+06 555-66-88")
+            .thisEmail_3("ivanov@noone.sv").thisGroup("Group 1");
     app.contact().create(contact, true);
     app.goTo().homepage();
     List<ContactData> after = app.contact().list();
