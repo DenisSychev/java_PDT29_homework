@@ -14,11 +14,19 @@ public class ContactDeletionTests extends TestBase {
     app.goTo().homepage();
     if (app.contact().list().size() == 0) {
       app.contact().create(new ContactData()
-              .thisFirstName("Пётр").thisMiddleName("Сидорович").thisLastName("Базанов").thisNickName("П. С. Б.")
-              .thisTitle("П.").thisCompany("Компания №2").thisAddress("Светлая ул., д. 1, Светлогорск, Центральная область, Страна")
-              .thisHomePhone("+08 111-22-33").thisMobilePhone("+08 111-22-33").thisWorkPhone("+09 222-11-33").thisFax("+06 555-66-88")
-              .thisEmail_3("ivanov@noone.sv").thisGroup("Group 1"), true);
-
+              .thisFirstName("Пётр")
+              .thisMiddleName("Сидорович")
+              .thisLastName("Базанов")
+              .thisNickName("П. С. Б.")
+              .thisTitle("П.")
+              .thisCompany("Компания №2")
+              .thisAddress("Светлая ул., д. 1, Светлогорск, Центральная область, Страна")
+              .thisHomePhone("+08 111-22-33")
+              .thisMobilePhone("+08 111-22-33")
+              .thisWorkPhone("+09 222-11-33")
+              .thisFax("+06 555-66-88")
+              .thisEmail_3("ivanov@noone.sv")
+              .thisGroup("Group 1"), true);
     }
   }
 
