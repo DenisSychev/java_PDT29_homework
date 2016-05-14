@@ -22,77 +22,77 @@ public class ContactData {
     return id;
   }
 
-  public ContactData thisId(int id) {
+  public ContactData withId(int id) {
     this.id = id;
     return this;
   }
 
-  public ContactData thisFirstName(String firstName) {
+  public ContactData withFirstName(String firstName) {
     this.firstName = firstName;
     return this;
   }
 
-  public ContactData thisMiddleName(String middleName) {
+  public ContactData withMiddleName(String middleName) {
     this.middleName = middleName;
     return this;
   }
 
-  public ContactData thisLastName(String lastName) {
+  public ContactData withLastName(String lastName) {
     this.lastName = lastName;
     return this;
   }
 
-  public ContactData thisNickName(String nickName) {
+  public ContactData withNickName(String nickName) {
     this.nickName = nickName;
     return this;
   }
 
-  public ContactData thisTitle(String title) {
+  public ContactData withTitle(String title) {
     this.title = title;
     return this;
   }
 
-  public ContactData thisCompany(String company) {
+  public ContactData withCompany(String company) {
     this.company = company;
     return this;
   }
 
-  public ContactData thisAddress(String address) {
+  public ContactData withAddress(String address) {
     this.address = address;
     return this;
   }
 
-  public ContactData thisHomePhone(String homePhone) {
+  public ContactData withHomePhone(String homePhone) {
     this.homePhone = homePhone;
     return this;
   }
 
-  public ContactData thisMobilePhone(String mobilePhone) {
+  public ContactData withMobilePhone(String mobilePhone) {
     this.mobilePhone = mobilePhone;
     return this;
   }
 
-  public ContactData thisWorkPhone(String workPhone) {
+  public ContactData withWorkPhone(String workPhone) {
     this.workPhone = workPhone;
     return this;
   }
 
-  public ContactData thisFax(String fax) {
+  public ContactData withFax(String fax) {
     this.fax = fax;
     return this;
   }
 
-  public ContactData thisEmail_2(String email_2) {
+  public ContactData withEmail_2(String email_2) {
     this.email_2 = email_2;
     return this;
   }
 
-  public ContactData thisEmail_3(String email_3) {
+  public ContactData withEmail_3(String email_3) {
     this.email_3 = email_3;
     return this;
   }
 
-  public ContactData thisGroup(String group) {
+  public ContactData withGroup(String group) {
     this.group = group;
     return this;
   }
@@ -169,6 +169,7 @@ public class ContactData {
 
     ContactData that = (ContactData) o;
 
+    if (id != that.id) return false;
     if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
     return lastName != null ? lastName.equals(that.lastName) : that.lastName == null;
 
@@ -176,7 +177,8 @@ public class ContactData {
 
   @Override
   public int hashCode() {
-    int result = firstName != null ? firstName.hashCode() : 0;
+    int result = id;
+    result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
     result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
     return result;
   }
