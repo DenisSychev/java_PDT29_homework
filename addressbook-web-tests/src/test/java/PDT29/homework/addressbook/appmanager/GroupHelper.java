@@ -1,6 +1,7 @@
 package PDT29.homework.addressbook.appmanager;
 
 import PDT29.homework.addressbook.model.GroupData;
+import PDT29.homework.addressbook.model.Groups;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -78,8 +79,8 @@ public class GroupHelper extends BaseHelper {
     return wd.findElements(By.xpath(".//span[@class=\"group\"]")).size();
   }
 
-  public Set<GroupData> all() {
-    Set<GroupData> groups = new HashSet<GroupData>();
+  public Groups all() {
+    Groups groups = new Groups();
     List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
     for (WebElement element : elements) {
       String name = element.getText();
