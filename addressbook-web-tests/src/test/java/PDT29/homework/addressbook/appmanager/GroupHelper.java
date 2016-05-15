@@ -76,8 +76,8 @@ public class GroupHelper extends BaseHelper {
     return isElementPresent(By.name("selected[]"));
   }
 
-  public int getGroupCount() {
-    return wd.findElements(By.xpath(".//span[@class=\"group\"]")).size();
+  public int count() {
+    return wd.findElements(By.xpath(".//span[@class='group']")).size();
   }
 
   private Groups groupCache = null;
