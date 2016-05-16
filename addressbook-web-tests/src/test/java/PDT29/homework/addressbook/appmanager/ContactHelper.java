@@ -96,10 +96,9 @@ public class ContactHelper extends BaseHelper {
   private Contacts contactCache = null;
 
   public Contacts all() {
-    if (contactCache != null){
+    if (contactCache != null) {
       return new Contacts(contactCache);
     }
-
     contactCache = new Contacts();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
@@ -107,7 +106,15 @@ public class ContactHelper extends BaseHelper {
       String lastName = element.findElement(By.xpath("(.//td[not(child::*)])[1]")).getText();
       String firstName = element.findElement(By.xpath("(.//td[not(child::*)])[2]")).getText();
       String address = element.findElement(By.xpath("(.//td[not(child::*)])[3]")).getText();
-      contactCache.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName).withAddress(address));
+      String allPhones = element.findElement(By.xpath(".//td[6]")).getText();
+      String allEmail = element.findElement(By.xpath(".//td[5]")).getText();
+      contactCache.add(new ContactData()
+              .withId(id)
+              .withFirstName(firstName)
+              .withLastName(lastName)
+              .withAddress(address)
+              .withAllPhones(allPhones)
+              .withAllEmail(allEmail));
     }
     return new Contacts(contactCache);
   }
@@ -119,6 +126,9 @@ public class ContactHelper extends BaseHelper {
     String homePhone = wd.findElement(By.name("home")).getAttribute("value");
     String mobilePhone = wd.findElement(By.name("mobile")).getAttribute("value");
     String workPhone = wd.findElement(By.name("work")).getAttribute("value");
+    String email = wd.findElement(By.name("email")).getAttribute("value");
+    String email_2 = wd.findElement(By.name("email2")).getAttribute("value");
+    String email_3 = wd.findElement(By.name("email3")).getAttribute("value");
     wd.navigate().back();
     return new ContactData()
             .withId(contact.getId())
@@ -126,6 +136,9 @@ public class ContactHelper extends BaseHelper {
             .withLastName(lastName)
             .withHomePhone(homePhone)
             .withMobilePhone(mobilePhone)
-            .withWorkPhone(workPhone);
+            .withWorkPhone(workPhone)
+            .withEmail(email)
+            .withEmail_2(email_2)
+            .withEmail_3(email_3);
   }
 }

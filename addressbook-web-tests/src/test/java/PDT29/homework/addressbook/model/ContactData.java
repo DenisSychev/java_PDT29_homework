@@ -12,9 +12,12 @@ public class ContactData {
   private String homePhone;
   private String mobilePhone;
   private String workPhone;
+  private String allPhones;
   private String fax;
+  private String email;
   private String email_2;
   private String email_3;
+  private String allEmail;
   private String group;
 
 
@@ -77,8 +80,18 @@ public class ContactData {
     return this;
   }
 
+  public ContactData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+  }
+
   public ContactData withFax(String fax) {
     this.fax = fax;
+    return this;
+  }
+
+  public ContactData withEmail(String email) {
+    this.email = email;
     return this;
   }
 
@@ -89,6 +102,11 @@ public class ContactData {
 
   public ContactData withEmail_3(String email_3) {
     this.email_3 = email_3;
+    return this;
+  }
+
+  public ContactData withAllEmail(String allEmail) {
+    this.allEmail = allEmail;
     return this;
   }
 
@@ -137,8 +155,16 @@ public class ContactData {
     return workPhone;
   }
 
+  public String getAllPhones() {
+    return allPhones;
+  }
+
   public String getFax() {
     return fax;
+  }
+
+  public String getEmail() {
+    return email;
   }
 
   public String getEmail_2() {
@@ -147,6 +173,10 @@ public class ContactData {
 
   public String getEmail_3() {
     return email_3;
+  }
+
+  public String getAllEmail() {
+    return allEmail;
   }
 
   public String getGroup() {
