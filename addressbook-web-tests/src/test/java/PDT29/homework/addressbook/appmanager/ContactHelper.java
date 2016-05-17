@@ -127,9 +127,13 @@ public class ContactHelper extends BaseHelper {
     initContactModificationById(contact.getId());
     String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
     String lastName = wd.findElement(By.name("lastname")).getAttribute("value");
+    String nickName = wd.findElement(By.name("nickname")).getAttribute("value");
+    String title = wd.findElement(By.name("title")).getAttribute("value");
+    String company = wd.findElement(By.name("company")).getAttribute("value");
     String homePhone = wd.findElement(By.name("home")).getAttribute("value");
     String mobilePhone = wd.findElement(By.name("mobile")).getAttribute("value");
     String workPhone = wd.findElement(By.name("work")).getAttribute("value");
+    String fax = wd.findElement(By.name("fax")).getAttribute("value");
     String address = wd.findElement(By.xpath("//textarea[@name='address']")).getText();
     String email = wd.findElement(By.name("email")).getAttribute("value");
     String email_2 = wd.findElement(By.name("email2")).getAttribute("value");
@@ -139,12 +143,25 @@ public class ContactHelper extends BaseHelper {
             .withId(contact.getId())
             .withFirstName(firstname)
             .withLastName(lastName)
+            .withNickName(nickName)
+            .withTitle(title)
+            .withCompany(company)
             .withHomePhone(homePhone)
             .withMobilePhone(mobilePhone)
             .withWorkPhone(workPhone)
+            .withFax(fax)
             .withAddress(address)
             .withEmail(email)
             .withEmail_2(email_2)
             .withEmail_3(email_3);
+  }
+
+  public ContactData infoFromDetailsForm(ContactData contact) {
+    gotoContactDetails(contact.getId());
+    String textInfo = wd.findElement(By.xpath(".//*[@id='content']")).getText();
+    String emailsInfo = wd.findElement(By.xpath(".//*[@id='content']/a[contains(@href,'mailto')]")).getText();
+    return new ContactData()
+            .withTextInfo(textInfo)
+            .withEmailsInfo(emailsInfo);
   }
 }
