@@ -47,6 +47,10 @@ public class ContactHelper extends BaseHelper {
     click(By.linkText("add new"));
   }
 
+  public void gotoContactDetails(int id){
+    wd.findElement(By.xpath(".//*[@name='entry'][descendant::input[@id='" + id + "']]//a[contains(@href,'view.php')]")).click();
+  }
+
   public void selectContactById(int id) {
     wd.findElement(By.xpath(".//td[@class='center']//input[@id='" + id + "']")).click();
   }
