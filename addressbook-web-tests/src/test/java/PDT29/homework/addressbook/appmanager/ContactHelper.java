@@ -127,6 +127,7 @@ public class ContactHelper extends BaseHelper {
     initContactModificationById(contact.getId());
     String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
     String lastName = wd.findElement(By.name("lastname")).getAttribute("value");
+    String middleName = wd.findElement(By.name("middlename")).getAttribute("value");
     String nickName = wd.findElement(By.name("nickname")).getAttribute("value");
     String title = wd.findElement(By.name("title")).getAttribute("value");
     String company = wd.findElement(By.name("company")).getAttribute("value");
@@ -143,6 +144,7 @@ public class ContactHelper extends BaseHelper {
             .withId(contact.getId())
             .withFirstName(firstname)
             .withLastName(lastName)
+            .withMiddleName(middleName)
             .withNickName(nickName)
             .withTitle(title)
             .withCompany(company)
@@ -159,9 +161,6 @@ public class ContactHelper extends BaseHelper {
   public ContactData infoFromDetailsForm(ContactData contact) {
     gotoContactDetails(contact.getId());
     String textInfo = wd.findElement(By.xpath(".//*[@id='content']")).getText();
-    String emailsInfo = wd.findElement(By.xpath(".//*[@id='content']/a[contains(@href,'mailto')]")).getText();
-    return new ContactData()
-            .withTextInfo(textInfo)
-            .withEmailsInfo(emailsInfo);
+    return new ContactData().withAllInfo(textInfo);
   }
 }
