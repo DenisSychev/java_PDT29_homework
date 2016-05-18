@@ -27,7 +27,7 @@ public class ContactDetailsTest extends TestBase {
   private String merge(ContactData contact){
     return Arrays.asList(contact.getAllInfo()).stream()
             .filter((s) -> !s.equals(""))
-            .map(ContactPhoneTests::cleaned).collect(Collectors.joining("\n"));
+            .map(ContactPhoneTests::cleaned).collect(Collectors.joining(""));
   }
 
   private String mergeDetailsContact(ContactData contact) {
@@ -45,6 +45,6 @@ public class ContactDetailsTest extends TestBase {
             contact.getEmail(),
             contact.getEmail_2(),
             contact.getEmail_3())
-            .stream().map(ContactPhoneTests::cleaned).collect(Collectors.joining("\n"));
+            .stream().map(ContactPhoneTests::cleaned).collect(Collectors.joining(""));
   }
 }
