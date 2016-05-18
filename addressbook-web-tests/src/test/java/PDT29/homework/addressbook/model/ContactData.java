@@ -19,8 +19,7 @@ public class ContactData {
   private String email_3;
   private String allEmail;
   private String group;
-  private String textInfo;
-  private String emailsInfo;
+  private String allInfo;
 
   public int getId() {
     return id;
@@ -116,13 +115,8 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withTextInfo(String textInfo) {
-    this.textInfo = textInfo;
-    return this;
-  }
-
-  public ContactData withEmailsInfo(String emailsInfo) {
-    this.emailsInfo = emailsInfo;
+  public ContactData withAllInfo(String allInfo) {
+    this.allInfo = allInfo;
     return this;
   }
 
@@ -194,12 +188,8 @@ public class ContactData {
     return group;
   }
 
-  public String getTextInfo() {
-    return textInfo;
-  }
-
-  public String getEmailsInfo() {
-    return emailsInfo;
+  public String getAllInfo() {
+    return allInfo;
   }
 
   @Override
