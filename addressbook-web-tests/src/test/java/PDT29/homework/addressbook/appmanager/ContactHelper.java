@@ -34,6 +34,7 @@ public class ContactHelper extends BaseHelper {
     type(By.name("fax"), contactData.getFax());
     type(By.name("email2"), contactData.getEmail_2());
     type(By.name("email3"), contactData.getEmail_3());
+    attach(By.name("photo"), contactData.getPhoto());
 
     if (creation) {
       new Select(wd.findElement(By.xpath(".//select[@name='new_group']"))).selectByVisibleText(contactData.getGroup());

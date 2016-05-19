@@ -4,6 +4,8 @@ import PDT29.homework.addressbook.model.ContactData;
 import PDT29.homework.addressbook.model.Contacts;
 import org.testng.annotations.Test;
 
+import java.io.File;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -13,6 +15,7 @@ public class ContactCreationTests extends TestBase {
   public void testContactCreation() {
     app.goTo().homepage();
     Contacts before = app.contact().all();
+    File photo = new File("src/test/resources/foto.jpg");
     ContactData contact = new ContactData()
             .withFirstName("Фёдр")
             .withMiddleName("Петрович")
@@ -26,12 +29,12 @@ public class ContactCreationTests extends TestBase {
             .withWorkPhone("+09 222-11-33")
             .withFax("+06 555-66-88")
             .withEmail_3("ivanov@noone.sv")
-            .withGroup("Group 1");
+            .withGroup("Group 1")
+            .withPhoto(photo);
     app.contact().create(contact, true);
     app.goTo().homepage();
     assertThat(app.contact().count(), equalTo(before.size() + 1));
     Contacts after = app.contact().all();
     assertThat(after, equalTo(before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
   }
-
 }
