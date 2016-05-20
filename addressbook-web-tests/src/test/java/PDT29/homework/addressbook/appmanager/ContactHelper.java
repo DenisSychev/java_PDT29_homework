@@ -41,7 +41,6 @@ public class ContactHelper extends BaseHelper {
     } else {
       Assert.assertFalse(isElementPresent(By.xpath(".//select[@name='new_group']")));
     }
-
   }
 
   public void gotoEditContactPage() {
