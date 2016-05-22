@@ -17,3 +17,4 @@ addressbook-web-tests/.idea/workspace.xml___jb_tmp___
 addressbook-web-tests/debug.log
 *.xml
 addressbook-web-tests/.idea/misc.xml
+*.csv
