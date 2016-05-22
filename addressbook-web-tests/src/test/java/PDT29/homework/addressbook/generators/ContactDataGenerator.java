@@ -5,6 +5,8 @@ import PDT29.homework.addressbook.model.ContactData;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.thoughtworks.xstream.XStream;
 
 import java.io.File;
@@ -43,9 +45,19 @@ public class ContactDataGenerator {
       saveAsCsv(contacts, new File(file));
     } else if (format.equals("xml")) {
       saveAsXml(contacts, new File(file));
+    } else if (format.equals("json")) {
+      saveAsJson(contacts, new File(file));
     } else {
       System.out.println("Нераспознанный формат" + format);
     }
+  }
+
+  private void saveAsJson(List<ContactData> contacts, File file) throws IOException {
+    Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
+    String json = gson.toJson(contacts);
+    Writer writer = new FileWriter(file);
+    writer.write(json);
+    writer.close();
   }
 
   private void saveAsXml(List<ContactData> contacts, File file) throws IOException {
@@ -87,9 +99,9 @@ public class ContactDataGenerator {
               .withMiddleName(String.format("Петрович %s", i))
               .withLastName(String.format("Иванов %s", i))
               .withNickName(String.format("И. П. С. %s", i))
-              .withTitle(String.format("гражданин %s", i))
-              .withCompany(String.format("Компания №1"))
-              .withAddress(String.format("Светлая ул., д. 1, Светлогорск, Центральная область, Страна"))
+              .withTitle(String.format("гражданин №%s", i))
+              .withCompany(String.format("Компания №%s", i))
+              .withAddress(String.format("Светлая ул., д. %s, Светлогорск, Центральная область, Страна", i))
               .withHomePhone(String.format("+08 111-22-3%s", i))
               .withMobilePhone(String.format("+08 111-22-%s3", i))
               .withWorkPhone(String.format("+09 222-1%s-33", i))
