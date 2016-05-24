@@ -11,6 +11,7 @@ dependencies {
     compile 'com.beust:jcommander:1.48'
     compile 'com.thoughtworks.xstream:xstream:1.4.9'
     compile 'com.google.code.gson:gson:2.6.2'
+    compile 'ch.qos.logback:logback-classic:1.1.7'
 }
 
 task testGroups (type: Test) {
@@ -23,6 +24,7 @@ task testGroups (type: Test) {
     if (project.hasProperty('target')){
         systemProperty 'target', "${target}"
     }
+    systemProperty "file.encoding", "utf-8"
 }
 
 task testContacts (type: Test) {
@@ -35,4 +37,9 @@ task testContacts (type: Test) {
     if (project.hasProperty('target')){
         systemProperty 'target', "${target}"
     }
+    systemProperty "file.encoding", "utf-8"
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
 }
