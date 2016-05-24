@@ -95,7 +95,7 @@ public class ContactDataGenerator {
     List<ContactData> contacts = new ArrayList<ContactData>();
     for (int i = 0; i < count; i++) {
       contacts.add(new ContactData()
-              .withFirstName(String.format("Ефим %s", i))
+              .withFirstName(String.format("Дмитрий %s", i))
               .withMiddleName(String.format("Петрович %s", i))
               .withLastName(String.format("Иванов %s", i))
               .withNickName(String.format("И. П. С. %s", i))
