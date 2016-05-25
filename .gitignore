@@ -12,8 +12,6 @@ gradle-app.setting
 .idea/workspace.xml
 DistancePoints/.idea/workspace.xml
 addressbook-web-tests/.idea/workspace.xml
-addressbook-web-tests/.idea/workspace.xml___jb_tmp___
-.idea/workspace.xml___jb_tmp___
-addressbook-web-tests/debug.log
 addressbook-web-tests/.idea/misc.xml
 *.csv
+*.log
