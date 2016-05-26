@@ -3,47 +3,100 @@ package PDT29.homework.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.io.File;
 
 @XStreamAlias("contact")
+@Entity
+@Table(name = "addressbook")
 public class ContactData {
+
   @XStreamOmitField
+  @Id
+  @Column(name = "id")
   private int id = Integer.MAX_VALUE;
+
   @Expose
+  @Column(name = "firstname")
   private String firstName;
+
   @Expose
+  @Column(name = "middlename")
   private String middleName;
+
   @Expose
+  @Column(name = "lastname")
   private String lastName;
+
   @Expose
+  @Column(name = "nickname")
   private String nickName;
+
   @Expose
+  @Column(name = "title")
   private String title;
+
   @Expose
+  @Column(name = "company")
   private String company;
+
   @Expose
+  @Column(name = "address")
+  @Type(type = "text")
   private String address;
+
   @Expose
+  @Column(name = "home")
+  @Type(type = "text")
   private String homePhone;
+
   @Expose
+  @Column(name = "mobile")
+  @Type(type = "text")
   private String mobilePhone;
+
   @Expose
+  @Column(name = "work")
+  @Type(type = "text")
   private String workPhone;
+
+  @Transient
   private String allPhones;
+
   @Expose
+  @Column(name = "fax")
+  @Type(type = "text")
   private String fax;
+
   @Expose
+  @Column(name = "email")
+  @Type(type = "text")
   private String email;
+
   @Expose
+  @Column(name = "email2")
+  @Type(type = "text")
   private String email_2;
+
   @Expose
+  @Column(name = "email3")
+  @Type(type = "text")
   private String email_3;
+
+  @Transient
   private String allEmail;
-  @Expose
+
+  @Transient
   private String group;
+
+  @Transient
   private String allInfo;
-  private File photo;
+
+  @Column(name = "photo")
+  @Type(type = "text")
+  private String photo;
 
   public int getId() {
     return id;
@@ -145,7 +198,7 @@ public class ContactData {
   }
 
   public ContactData withPhoto(File photo) {
-    this.photo = photo;
+    this.photo = photo.getPath();
     return this;
   }
 
@@ -222,7 +275,7 @@ public class ContactData {
   }
 
   public File getPhoto() {
-    return photo;
+    return new File(photo);
   }
 
   @Override
