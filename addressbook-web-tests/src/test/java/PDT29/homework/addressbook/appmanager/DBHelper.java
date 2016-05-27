@@ -1,6 +1,7 @@
 package PDT29.homework.addressbook.appmanager;
 
 import PDT29.homework.addressbook.model.ContactData;
+import PDT29.homework.addressbook.model.Contacts;
 import PDT29.homework.addressbook.model.GroupData;
 import PDT29.homework.addressbook.model.Groups;
 import org.hibernate.Session;
@@ -29,6 +30,15 @@ public class DBHelper {
     session.getTransaction().commit();
     session.close();
     return new Groups(result);
+  }
+
+  public Contacts contacts(){
+    Session session = sessionFactory.openSession();
+    session.beginTransaction();
+    List<ContactData> result = session.createQuery("from ContactData").list();
+    session.getTransaction().commit();
+    session.close();
+    return new Contacts(result);
   }
 
 }
