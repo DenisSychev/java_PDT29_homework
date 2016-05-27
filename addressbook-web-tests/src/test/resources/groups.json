@@ -8,20 +8,5 @@
     "name": "test 1",
     "header": "Header 1",
     "footer": "Footer 1"
-  },
-  {
-    "name": "test 2",
-    "header": "Header 2",
-    "footer": "Footer 2"
-  },
-  {
-    "name": "test 3",
-    "header": "Header 3",
-    "footer": "Footer 3"
-  },
-  {
-    "name": "test 4",
-    "header": "Header 4",
-    "footer": "Footer 4"
   }
 ]
