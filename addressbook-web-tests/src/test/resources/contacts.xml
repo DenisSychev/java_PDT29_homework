@@ -1,12 +1,12 @@
 <list>
   <contact>
-    <firstName>Фёдр 0</firstName>
+    <firstName>Дмитрий 0</firstName>
     <middleName>Петрович 0</middleName>
     <lastName>Иванов 0</lastName>
     <nickName>И. П. С. 0</nickName>
-    <title>гражданин 0</title>
-    <company>Компания №1</company>
-    <address>Светлая ул., д. 1, Светлогорск, Центральная область, Страна</address>
+    <title>гражданин №0</title>
+    <company>Компания №0</company>
+    <address>Светлая ул., д. 0, Светлогорск, Центральная область, Страна</address>
     <homePhone>+08 111-22-30</homePhone>
     <mobilePhone>+08 111-22-03</mobilePhone>
     <workPhone>+09 222-10-33</workPhone>
@@ -16,11 +16,11 @@
     <group>test 1</group>
   </contact>
   <contact>
-    <firstName>Фёдр 1</firstName>
+    <firstName>Дмитрий 1</firstName>
     <middleName>Петрович 1</middleName>
     <lastName>Иванов 1</lastName>
     <nickName>И. П. С. 1</nickName>
-    <title>гражданин 1</title>
+    <title>гражданин №1</title>
     <company>Компания №1</company>
     <address>Светлая ул., д. 1, Светлогорск, Центральная область, Страна</address>
     <homePhone>+08 111-22-31</homePhone>
@@ -32,13 +32,13 @@
     <group>test 1</group>
   </contact>
   <contact>
-    <firstName>Фёдр 2</firstName>
+    <firstName>Дмитрий 2</firstName>
     <middleName>Петрович 2</middleName>
     <lastName>Иванов 2</lastName>
     <nickName>И. П. С. 2</nickName>
-    <title>гражданин 2</title>
-    <company>Компания №1</company>
-    <address>Светлая ул., д. 1, Светлогорск, Центральная область, Страна</address>
+    <title>гражданин №2</title>
+    <company>Компания №2</company>
+    <address>Светлая ул., д. 2, Светлогорск, Центральная область, Страна</address>
     <homePhone>+08 111-22-32</homePhone>
     <mobilePhone>+08 111-22-23</mobilePhone>
     <workPhone>+09 222-12-33</workPhone>
@@ -48,13 +48,13 @@
     <group>test 1</group>
   </contact>
   <contact>
-    <firstName>Фёдр 3</firstName>
+    <firstName>Дмитрий 3</firstName>
     <middleName>Петрович 3</middleName>
     <lastName>Иванов 3</lastName>
     <nickName>И. П. С. 3</nickName>
-    <title>гражданин 3</title>
-    <company>Компания №1</company>
-    <address>Светлая ул., д. 1, Светлогорск, Центральная область, Страна</address>
+    <title>гражданин №3</title>
+    <company>Компания №3</company>
+    <address>Светлая ул., д. 3, Светлогорск, Центральная область, Страна</address>
     <homePhone>+08 111-22-33</homePhone>
     <mobilePhone>+08 111-22-33</mobilePhone>
     <workPhone>+09 222-13-33</workPhone>
@@ -64,13 +64,13 @@
     <group>test 1</group>
   </contact>
   <contact>
-    <firstName>Фёдр 4</firstName>
+    <firstName>Дмитрий 4</firstName>
     <middleName>Петрович 4</middleName>
     <lastName>Иванов 4</lastName>
     <nickName>И. П. С. 4</nickName>
-    <title>гражданин 4</title>
-    <company>Компания №1</company>
-    <address>Светлая ул., д. 1, Светлогорск, Центральная область, Страна</address>
+    <title>гражданин №4</title>
+    <company>Компания №4</company>
+    <address>Светлая ул., д. 4, Светлогорск, Центральная область, Страна</address>
     <homePhone>+08 111-22-34</homePhone>
     <mobilePhone>+08 111-22-43</mobilePhone>
     <workPhone>+09 222-14-33</workPhone>
