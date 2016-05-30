@@ -31,7 +31,7 @@ public class ContactEmailTests extends TestBase {
               .withFax("+06 555-66-88")
               .withEmail_2("bazanov@noone.sv")
               .withEmail_3("ivanov@noone.sv")
-              .withGroup("Group 1"), true);
+              .withGroup("Group 1"));
     }
   }
 

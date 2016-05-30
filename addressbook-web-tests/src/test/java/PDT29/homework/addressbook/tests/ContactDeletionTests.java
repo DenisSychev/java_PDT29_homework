@@ -28,19 +28,18 @@ public class ContactDeletionTests extends TestBase {
               .withWorkPhone("+09 222-11-33")
               .withFax("+06 555-66-88")
               .withEmail_3("ivanov@noone.sv")
-              .withGroup("Group 1"), true);
+              .withGroup("Group 1"));
     }
   }
 
   @Test
   public void testContactDeletion() {
-    app.goTo().homepage();
-    Contacts before = app.contact().all();
+    Contacts before = app.db().contacts();
     ContactData deletedContact = before.iterator().next();
     app.contact().delete(deletedContact);
     app.goTo().homepage();
     assertThat(app.contact().count(), equalTo(before.size() - 1));
-    Contacts after = app.contact().all();
+    Contacts after = app.db().contacts();
     assertThat(after, equalTo(before.without(deletedContact)));
   }
 
