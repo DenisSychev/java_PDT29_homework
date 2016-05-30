@@ -5,6 +5,8 @@ import PDT29.homework.addressbook.model.Contacts;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.io.File;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.testng.Assert.assertEquals;
@@ -28,13 +30,14 @@ public class ContactModificationTests extends TestBase {
               .withWorkPhone("+09 222-11-33")
               .withFax("+06 555-66-88")
               .withEmail_3("ivanov@noone.sv")
-              .withGroup("Group 1"), true);
+              .withGroup("Group 1"));
     }
   }
 
   @Test
   public void testContactModification() {
     Contacts before = app.db().contacts();
+    File photo = new File("src/test/resources/foto2.jpg");
     ContactData modifiedContact = before.iterator().next();
     ContactData contact = new ContactData()
             .withId(modifiedContact.getId())
@@ -50,10 +53,10 @@ public class ContactModificationTests extends TestBase {
             .withWorkPhone("+66 677 111 2 33 2")
             .withFax("+666771112233")
             .withEmail_2("name@domain.bm")
-            .withEmail_3("last.name@domain.bm");
-    app.goTo().homepage();
+            .withEmail_3("last.name@domain.bm")
+            .withPhoto(photo);
     app.contact().modify(contact);
-    //*app.goTo().homepage();
+    app.goTo().homepage();
     assertThat(app.contact().count(), equalTo(before.size()));
     Contacts after = app.db().contacts();
     assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));

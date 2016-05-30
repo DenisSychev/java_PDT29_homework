@@ -95,8 +95,9 @@ public class ContactData {
   @Transient
   private String allInfo;
 
-  @Column(name = "photo")
-  @Type(type = "text")
+  /*@Column(name = "photo")
+  @Type(type = "text")*/
+  @Transient
   private String photo;
 
   public int getId() {
@@ -298,7 +299,6 @@ public class ContactData {
     if (mobilePhone != null ? !mobilePhone.equals(that.mobilePhone) : that.mobilePhone != null) return false;
     if (workPhone != null ? !workPhone.equals(that.workPhone) : that.workPhone != null) return false;
     if (fax != null ? !fax.equals(that.fax) : that.fax != null) return false;
-    if (email != null ? !email.equals(that.email) : that.email != null) return false;
     if (email_2 != null ? !email_2.equals(that.email_2) : that.email_2 != null) return false;
     return email_3 != null ? email_3.equals(that.email_3) : that.email_3 == null;
 
@@ -318,19 +318,29 @@ public class ContactData {
     result = 31 * result + (mobilePhone != null ? mobilePhone.hashCode() : 0);
     result = 31 * result + (workPhone != null ? workPhone.hashCode() : 0);
     result = 31 * result + (fax != null ? fax.hashCode() : 0);
-    result = 31 * result + (email != null ? email.hashCode() : 0);
     result = 31 * result + (email_2 != null ? email_2.hashCode() : 0);
     result = 31 * result + (email_3 != null ? email_3.hashCode() : 0);
     return result;
   }
 
   @Override
-
   public String toString() {
     return "ContactData{" +
-            "id='" + id + '\'' +
+            "id=" + id +
             ", firstName='" + firstName + '\'' +
+            ", middleName='" + middleName + '\'' +
             ", lastName='" + lastName + '\'' +
+            ", nickName='" + nickName + '\'' +
+            ", title='" + title + '\'' +
+            ", company='" + company + '\'' +
+            ", address='" + address + '\'' +
+            ", homePhone='" + homePhone + '\'' +
+            ", mobilePhone='" + mobilePhone + '\'' +
+            ", workPhone='" + workPhone + '\'' +
+            ", fax='" + fax + '\'' +
+            ", email='" + email + '\'' +
+            ", email_2='" + email_2 + '\'' +
+            ", email_3='" + email_3 + '\'' +
             '}';
   }
 
