@@ -30,8 +30,8 @@ public class ContactDetailsTest extends TestBase {
               .withWorkPhone("+09 222-11-33")
               .withFax("+06 555-66-88")
               .withEmail_2("bazanov@noone.sv")
-              .withEmail_3("ivanov@noone.sv")
-              .withGroup("Group 1"));
+              .withEmail_3("ivanov@noone.sv"));
+              //.withGroup("Group 1"));
     }
   }
 

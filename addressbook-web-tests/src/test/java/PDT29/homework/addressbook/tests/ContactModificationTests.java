@@ -29,8 +29,8 @@ public class ContactModificationTests extends TestBase {
               .withMobilePhone("+08 111-22-33")
               .withWorkPhone("+09 222-11-33")
               .withFax("+06 555-66-88")
-              .withEmail_3("ivanov@noone.sv")
-              .withGroup("Group 1"));
+              .withEmail_3("ivanov@noone.sv"));
+              //.withGroup("Group 1"));
     }
   }
 

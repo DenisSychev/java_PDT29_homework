@@ -85,8 +85,8 @@ public class ContactDataGenerator {
                 contact.getWorkPhone(),
                 contact.getFax(),
                 contact.getEmail_2(),
-                contact.getEmail_3(),
-                contact.getGroup()));
+                contact.getEmail_3()));
+                //contact.getGroup()));
       }
     }
   }
@@ -107,8 +107,8 @@ public class ContactDataGenerator {
               .withWorkPhone(String.format("+09 222-1%s-33", i))
               .withFax(String.format("+06 555-%s6-88", i))
               .withEmail_2(String.format("fedor.%s@noone.sv", i))
-              .withEmail_3(String.format("fedor.%s.ivanov@noone.sv", i))
-              .withGroup(String.format("test 1")));
+              .withEmail_3(String.format("fedor.%s.ivanov@noone.sv", i)));
+              //.withGroup(String.format("test 1")));
     }
     return contacts;
   }
