@@ -1,12 +1,24 @@
 package PDT29.homework.addressbook.model;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.Expose;
+import com.google.gson.reflect.TypeToken;
+import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import org.hibernate.annotations.Type;
+import org.testng.annotations.DataProvider;
 
 import javax.persistence.*;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @XStreamAlias("contact")
 @Entity
@@ -88,10 +100,6 @@ public class ContactData {
   @Transient
   private String allEmail;
 
-  @Expose
-  @Transient
-  private String group;
-
   @Transient
   private String allInfo;
 
@@ -99,6 +107,10 @@ public class ContactData {
   @Type(type = "text")*/
   @Transient
   private String photo;
+
+  @ManyToMany(fetch = FetchType.EAGER)
+  @JoinTable(name = "address_in_groups", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
+  private Set<GroupData> groups = new HashSet<GroupData>();
 
   public int getId() {
     return id;
@@ -189,11 +201,6 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withGroup(String group) {
-    this.group = group;
-    return this;
-  }
-
   public ContactData withAllInfo(String allInfo) {
     this.allInfo = allInfo;
     return this;
@@ -268,16 +275,16 @@ public class ContactData {
     return allEmail;
   }
 
-  public String getGroup() {
-    return group;
-  }
-
   public String getAllInfo() {
     return allInfo;
   }
 
   public File getPhoto() {
     return new File(photo);
+  }
+
+  public Groups getGroups() {
+    return new Groups(groups);
   }
 
   @Override
