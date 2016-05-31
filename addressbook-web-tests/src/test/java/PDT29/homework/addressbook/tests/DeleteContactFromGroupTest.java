@@ -61,6 +61,7 @@ public class DeleteContactFromGroupTest extends TestBase{
     GroupData group = app.db().groups().iterator().next();
     app.goTo().homepage();
     app.group().selectSortAvailableGroup(group);
+    app.contact().deleteFromGroup(contact);
     app.goTo().homepage();
   }
 }
