@@ -72,8 +72,16 @@ public class ContactHelper extends BaseHelper {
     click(By.xpath("//input[@value='Update']"));
   }
 
-  private void selectAvailableGroup(GroupData group) {
+  private void selectAddToAvailableGroup(GroupData group) {
     new Select(wd.findElement(By.xpath(".//select[@name='to_group']"))).selectByVisibleText(group.getName());
+  }
+
+  private void submitAddToGroup() {
+    click(By.xpath("//input[@name='add']"));
+  }
+
+  private void submitDeleteFromGroup() {
+    click(By.xpath("//input[@name='remove']"));
   }
 
   public void create(ContactData contact) {
@@ -100,7 +108,13 @@ public class ContactHelper extends BaseHelper {
 
   public void addToGroup(ContactData contact, GroupData addGroup) {
     selectContactById(contact.getId());
-    selectAvailableGroup(addGroup);
+    selectAddToAvailableGroup(addGroup);
+    submitAddToGroup();
+  }
+
+  public void deleteFromGroup(ContactData contact) {
+    selectContactById(contact.getId());
+    submitDeleteFromGroup();
   }
 
   public boolean isThereAContact() {
@@ -177,5 +191,4 @@ public class ContactHelper extends BaseHelper {
     String textInfo = wd.findElement(By.xpath(".//*[@id='content']")).getText();
     return new ContactData().withAllInfo(textInfo);
   }
-
 }

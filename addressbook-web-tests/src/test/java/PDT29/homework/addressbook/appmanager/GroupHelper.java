@@ -5,6 +5,7 @@ import PDT29.homework.addressbook.model.Groups;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
@@ -46,6 +47,10 @@ public class GroupHelper extends BaseHelper {
 
   public void submitGroupModification() {
     click(By.xpath("//input[@name='update']"));
+  }
+
+  public void selectSortAvailableGroup(GroupData group) {
+    new Select(wd.findElement(By.xpath(".//select[@name='group']"))).selectByVisibleText(group.getName());
   }
 
   public void create(GroupData group) {
@@ -97,5 +102,4 @@ public class GroupHelper extends BaseHelper {
 
     return new Groups(groupCache);
   }
-
 }

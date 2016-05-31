@@ -12,7 +12,7 @@ import java.io.File;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class AddContactToGroupTest extends TestBase{
+public class DeleteContactFromGroupTest extends TestBase{
 
   @BeforeMethod
   public void checkPreconditions() {
@@ -20,9 +20,9 @@ public class AddContactToGroupTest extends TestBase{
       Groups before = app.db().groups();
       app.goTo().groupPage();
       GroupData newGroup = new GroupData()
-              .withName("test2")
-              .withHeader("test_2.2")
-              .withFooter("test_2.3");
+              .withName("test1")
+              .withHeader("test_1.2")
+              .withFooter("test_1.3");
       app.group().create(newGroup);
       Groups after = app.db().groups();
       assertThat(after, equalTo(before.withAdded(newGroup.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
@@ -56,11 +56,11 @@ public class AddContactToGroupTest extends TestBase{
   }
 
   @Test
-  public void testAddContactToGroup(){
+  public void testDeleteContactFromGroup(){
     ContactData contact = app.db().contacts().iterator().next();
-    GroupData groups = app.db().groups().iterator().next();
+    GroupData group = app.db().groups().iterator().next();
     app.goTo().homepage();
-    app.contact().addToGroup(contact, groups);
+    app.group().selectSortAvailableGroup(group);
     app.goTo().homepage();
   }
 }
