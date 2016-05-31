@@ -2,6 +2,7 @@ package PDT29.homework.addressbook.appmanager;
 
 import PDT29.homework.addressbook.model.ContactData;
 import PDT29.homework.addressbook.model.Contacts;
+import PDT29.homework.addressbook.model.GroupData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -71,6 +72,10 @@ public class ContactHelper extends BaseHelper {
     click(By.xpath("//input[@value='Update']"));
   }
 
+  private void selectAvailableGroup(GroupData group) {
+    new Select(wd.findElement(By.xpath(".//select[@name='to_group']"))).selectByVisibleText(group.getName());
+  }
+
   public void create(ContactData contact) {
     gotoEditContactPage();
     fillContactForm(contact, true);
@@ -91,6 +96,11 @@ public class ContactHelper extends BaseHelper {
     deleteSelectedContact();
     closeAlert();
     contactCache = null;
+  }
+
+  public void addToGroup(ContactData contact, GroupData addGroup) {
+    selectContactById(contact.getId());
+    selectAvailableGroup(addGroup);
   }
 
   public boolean isThereAContact() {
@@ -167,4 +177,5 @@ public class ContactHelper extends BaseHelper {
     String textInfo = wd.findElement(By.xpath(".//*[@id='content']")).getText();
     return new ContactData().withAllInfo(textInfo);
   }
+
 }

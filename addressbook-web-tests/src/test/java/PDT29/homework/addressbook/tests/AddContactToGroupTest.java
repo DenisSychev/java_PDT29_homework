@@ -57,9 +57,10 @@ public class AddContactToGroupTest extends TestBase{
 
   @Test
   public void testAddContactToGroup(){
+    ContactData contact = app.db().contacts().iterator().next();
+    GroupData groups = app.db().groups().iterator().next();
     app.goTo().homepage();
-    ContactData contact = app.contact().all().iterator().next();
-    ContactData contactToGroup = app.contact()./*метод добавление контакта*/(contact);
-    assertThat(contact.getGroups(), equalTo(contactToGroup.getGroups));
+    app.contact().addToGroup(contact, groups);
+    app.goTo().homepage();
   }
 }
