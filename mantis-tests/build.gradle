@@ -25,7 +25,3 @@ test {
     }
     systemProperty "file.encoding", "utf-8"
 }
-
-test.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
