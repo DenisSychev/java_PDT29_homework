@@ -1,5 +1,8 @@
 package PDT29.homework.mantis.appmanager;
 
+import PDT29.homework.mantis.model.DBHelper;
+import PDT29.homework.mantis.model.UserData;
+import PDT29.homework.mantis.model.Users;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -22,6 +25,7 @@ public class ApplicationManager {
   private MailHelper mailHelper;
   private LoginHelper loginHelper;
   private NavigationHelper navigationHelper;
+  private DBHelper dBHelper;
 
   public ApplicationManager(String browser) {
     this.browser = browser;
@@ -102,4 +106,14 @@ public class ApplicationManager {
     return mailHelper;
   }
 
+  public UserHelper user() {
+    return new UserHelper(this);
+  }
+
+  public DBHelper db() {
+    if (dBHelper == null) {
+      dBHelper = new DBHelper();
+    }
+    return dBHelper;
+  }
 }
