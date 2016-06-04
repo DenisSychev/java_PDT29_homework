@@ -15,11 +15,13 @@ public class TestBase {
   @BeforeSuite
   public void setUp() throws Exception {
     app.init();
+    //Заменяет файл конфишурации на сервере (работа описана в FtpHelper)
     app.ftp().upload(new File("src\\test\\resources\\config_inc.php"), "config_inc.php", "config_inc.php.bak");
   }
 
   @AfterSuite(alwaysRun = true)
   public void tearDown() throws IOException {
+    //Восстанавливает резервный (оригинальный) файл конфишурации на сервере (работа описана в FtpHelper)
     app.ftp().restore("config_inc.php", "config_inc.php.bak");
     app.stop();
   }

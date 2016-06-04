@@ -15,11 +15,13 @@ import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
   private final Properties properties;
-  private WebDriver wd;
+  private WebDriver wd; //Браузер можно запустить только через getDriver()
   private String browser;
   private RegistrationHelper registrationHelper;
   private FtpHelper ftp;
   private MailHelper mailHelper;
+  private LoginHelper loginHelper;
+  private NavigationHelper navigationHelper;
 
   public ApplicationManager(String browser) {
     this.browser = browser;
@@ -31,8 +33,9 @@ public class ApplicationManager {
     properties.load(new FileReader(new File(String.format("src\\test\\resources\\%s.properties", target))));
   }
 
+  //Запуск браузера
   public WebDriver getDriver() {
-    if (wd == null) {
+    if (wd == null) { //если браузер уже не запущен, то запускаем
       if (Objects.equals(browser, BrowserType.FIREFOX)) {
         wd = new FirefoxDriver();
       } else if (Objects.equals(browser, BrowserType.CHROME)) {
@@ -46,10 +49,11 @@ public class ApplicationManager {
     return wd;
   }
 
+  //Остановка браузера
   public void stop() {
-    if (wd != null) {
-      wd.quit();
-    }
+    if (wd != null) { //Если он запущен,
+      wd.quit(); //то его надо остановить
+    } //иначе ничего не надо делать
   }
 
   public HttpSession newSession() {
@@ -60,16 +64,33 @@ public class ApplicationManager {
     return properties.getProperty(key);
   }
 
-  public RegistrationHelper registration() {
-    if (registrationHelper == null) {
-      registrationHelper = new RegistrationHelper(this);
+  //Инициализация RegistrationHelper только в случае обращения
+  public RegistrationHelper registration() { //в тестах вызывается app.registration()
+    if (registrationHelper == null) { //если уже был инициализирован RegistrationHelper (запущен браузер)
+      registrationHelper = new RegistrationHelper(this); //то запускаем его (this - это ссылка на ApplicationManager)
     }
     return registrationHelper;
   }
 
+  //Инициализация LoginHelper только в случае обращения
+  public LoginHelper login() { //в тестах вызывается app.login()
+    if (loginHelper == null) { //если уже был инициализирован RegistrationHelper (запущен браузер)
+      loginHelper = new LoginHelper(this); //то запускаем его (this - это ссылка на ApplicationManager)
+    }
+    return loginHelper;
+  }
+
+  public NavigationHelper goTo() { //в тестах вызывается app.goTo()
+    if (navigationHelper == null) {
+      navigationHelper = new NavigationHelper(this);
+    }
+    return navigationHelper;
+  }
+
+  //Инициализация FtpHelper только в случае обращения
   public FtpHelper ftp() {
-    if (ftp == null) {
-      ftp = new FtpHelper(this);
+    if (ftp == null) { //если уже был инициализирован FtpHelper (запущен браузер)
+      ftp = new FtpHelper(this); //то запускаем его (this - это ссылка на ApplicationManager)
     }
     return ftp;
   }

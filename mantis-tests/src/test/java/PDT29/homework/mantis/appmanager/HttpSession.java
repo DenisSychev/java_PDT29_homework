@@ -24,8 +24,9 @@ public class HttpSession {
     httpclient = HttpClients.custom().setRedirectStrategy(new LaxRedirectStrategy()).build();
   }
 
+  //Авторизация любого пользователя
   public boolean login(String username, String password) throws IOException {
-    HttpPost post = new HttpPost(app.getProperty("web.baseUrl") + "/login.php");
+    HttpPost post = new HttpPost(app.getProperty("web.baseUrl") + "/login.php"); //Получает данные из local.properties и переходит на страницу login.php
     List<NameValuePair> params = new ArrayList<NameValuePair>();
     params.add(new BasicNameValuePair("username", username));
     params.add(new BasicNameValuePair("password", password));
@@ -34,7 +35,7 @@ public class HttpSession {
     post.setEntity(new UrlEncodedFormEntity(params));
     CloseableHttpResponse response = httpclient.execute(post);
     String body = getTextFrom(response);
-    return body.contains(String.format("<span class=\"italic\">%s</span>", username));
+    return body.contains(String.format("<span class=\"italic\">%s</span>", username)); //проверка того, что пользователь авторизован на сайте
   }
 
   private String getTextFrom(CloseableHttpResponse response) throws IOException {
@@ -46,8 +47,9 @@ public class HttpSession {
 
   }
 
+  // Проверка того, какой пользователь вошёл в систему
   public boolean isLoggedInAs(String username) throws IOException {
-    HttpPost get = new HttpPost(app.getProperty("web.baseUrl") + "/index.php");
+    HttpPost get = new HttpPost(app.getProperty("web.baseUrl") + "/index.php"); //Получает данные из local.properties и переходит на страницу index.php
     CloseableHttpResponse response = httpclient.execute(get);
     String body = getTextFrom(response);
     return body.contains(String.format("<span class=\"italic\">%s</span>", username));
