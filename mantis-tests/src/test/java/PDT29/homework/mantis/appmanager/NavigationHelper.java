@@ -12,4 +12,8 @@ public class NavigationHelper extends BaseHelper{
   public void manageUsers() {
     click(By.xpath(".//*[@class='bracket-link']//a[contains(@href,'manage_user_page.php')]"));
   }
+
+  public void logout() {
+    click(By.xpath(".//*[@class='menu']//a[contains(@href,'logout_page.php')]"));
+  }
 }
