@@ -9,7 +9,7 @@ public class UserHelper extends BaseHelper{
     super(app);
   }
 
-  public void changePassword(UserData user) {
+  public void resetPassword(UserData user) {
     selectUserById(user.getId());
     resetPassword();
   }
