@@ -24,6 +24,7 @@ public class ChangePasswordUserTest extends TestBase {
   public void testChangePasswordUser() throws IOException {
     /* Авторизуемся в браузере
     app.newSession().login(app.getProperty("web.adminLogin"), app.getProperty("web.adminPassword"));*/
+
     //Администратор авторизуется и сбрасывает пароль пользователю
     Users user = app.db().users();
     UserData selectedUser = user.iterator().next();
@@ -46,10 +47,8 @@ public class ChangePasswordUserTest extends TestBase {
     return regex.getText(mailMessage.text);
   }
 
-
   @AfterMethod(alwaysRun = true)
   public void stopMailServer() {
     app.mail().stop();
   }
-
 }

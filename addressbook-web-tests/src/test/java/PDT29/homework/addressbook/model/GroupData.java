@@ -46,9 +46,17 @@ public class GroupData {
     return this;
   }
 
+  public String getName() {
+    return name;
+  }
+
   public GroupData withName(String name) {
     this.name = name;
     return this;
+  }
+
+  public String getHeader() {
+    return header;
   }
 
   public GroupData withHeader(String header) {
@@ -56,21 +64,13 @@ public class GroupData {
     return this;
   }
 
+  public String getFooter() {
+    return footer;
+  }
+
   public GroupData withFooter(String footer) {
     this.footer = footer;
     return this;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public String getHeader() {
-    return header;
-  }
-
-  public String getFooter() {
-    return footer;
   }
 
   public Contacts getContacts() {
