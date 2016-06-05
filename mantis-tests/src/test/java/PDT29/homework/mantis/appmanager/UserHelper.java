@@ -21,4 +21,11 @@ public class UserHelper extends BaseHelper{
   private void selectUserById(int id) {
     wd.findElement(By.xpath("//a[@href=\"manage_user_edit_page.php?user_id="+ id +"\"]")).click();
   }
+
+  public void changePassword(String changePasswordLink, String newPassword) {
+    wd.get(changePasswordLink);
+    type(By.name("password"), newPassword);
+    type(By.name("password_confirm"), newPassword);
+    click(By.xpath(".//input[@value='Update User']"));
+  }
 }
