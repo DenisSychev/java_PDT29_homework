@@ -21,7 +21,7 @@ public class SoapTest extends TestBase{
 
   @Test(enabled = false)
   public void testGetProject () throws MalformedURLException, ServiceException, RemoteException {
-    Set<Project> projects = app.soap().getProjects();
+    Set<Project> projects = app.soap().getProjects(); //Получем информацию о проектах из БД
     System.out.println(projects.size());
     for (Project project : projects) {
       System.out.println(project.getName());
