@@ -16,7 +16,7 @@ import static org.testng.Assert.assertEquals;
 
 public class SoapTest extends TestBase {
 
-  @Test
+  @Test(enabled = false)
   public void testGetProject() throws MalformedURLException, ServiceException, RemoteException {
     Set<Project> projects = app.soap().getProjects(); //Получем информацию о проектах из БД
     System.out.println(projects.size());
@@ -25,7 +25,7 @@ public class SoapTest extends TestBase {
     }
   }
 
-  @Test
+  @Test(enabled = false)
   public void testCreateIssue() throws RemoteException, ServiceException, MalformedURLException {
     Set<Project> projects = app.soap().getProjects();
     Issue issue = new Issue().withSummary("New Issue from test").withDescription("Description this issue").withProject(projects.iterator().next());
@@ -33,9 +33,23 @@ public class SoapTest extends TestBase {
     assertEquals(issue.getSummary(), created.getSummary());
   }
 
-  @Test(enabled = false)
-  public void someTest() throws RemoteException, ServiceException, MalformedURLException {
-    skipIfNotFixed(0001); //указываем конкретный id бага для которого был написан тест
+  @Test
+  public void someFirstTest() throws RemoteException, ServiceException, MalformedURLException {
+    skipIfNotFixed(2); //указываем конкретный id бага для которого был написан тест
+    System.out.println("Начало выполнения someTest");
+    //Далее начинает работать тест
+  }
+
+  @Test
+  public void someSecondTest() throws RemoteException, ServiceException, MalformedURLException {
+    skipIfNotFixed(3); //указываем конкретный id бага для которого был написан тест
+    System.out.println("Начало выполнения someTest");
+    //Далее начинает работать тест
+  }
+
+  @Test
+  public void someThirdTest() throws RemoteException, ServiceException, MalformedURLException {
+    skipIfNotFixed(4); //указываем конкретный id бага для которого был написан тест
     System.out.println("Начало выполнения someTest");
     //Далее начинает работать тест
   }
