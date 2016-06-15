@@ -9,6 +9,7 @@ import com.jayway.restassured.RestAssured;
 import org.apache.http.client.fluent.Executor;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.message.BasicNameValuePair;
+import org.testng.SkipException;
 import org.testng.annotations.BeforeClass;
 
 import java.io.IOException;
@@ -17,7 +18,7 @@ import java.util.Set;
 public class TestBase {
 
   @BeforeClass
-  public void init() {
+  private void init() {
     RestAssured.authentication = RestAssured.basic("LSGjeU4yP1X493ud1hNniA==", "");
   }
 
@@ -59,4 +60,14 @@ public class TestBase {
     JsonElement parsedJsonIssues = new JsonParser().parse(jsonIssues);
     return parsedJsonIssues.getAsJsonObject().get("issue_id").getAsInt();
   }
+
+  /*private boolean isIssueOpen(int issueId) {
+
+  }
+
+  public void skipIfNotFixed(int issueId) {
+    if (isIssueOpen(issueId)) {
+      throw new SkipException("Ignored because of issue " + issueId);
+    }
+  }*/
 }
